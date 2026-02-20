@@ -5,6 +5,11 @@ function App() {
 
   const [users ,setUsers] = useState([]) 
 
+  const deleteUser = (id) => {
+     setUsers(users.filter(user => user.id !== id) )
+   
+  }
+
 useEffect(()=>{
 
 
@@ -31,7 +36,9 @@ async function gitubUsers (){
     <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexWrap:"wrap", gap:10}}>
       
 
-      {users.map(user => (<img src={user.avatar_url} style={{height:200 , width:200 }}></img>) )}
+      {users.map(user => (<img key={user.id} src={user.avatar_url} style={{height:200 , width:200 }}></img>) )} 
+
+      {users.map(user => <button onClick={()=> deleteUser(user.id)}>delete{user.id}</button> )}
     </div>
       
     </>
