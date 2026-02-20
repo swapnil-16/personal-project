@@ -1,46 +1,51 @@
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 
 
-function App() { 
+function App() {
 
-  const [users ,setUsers] = useState([]) 
+  const [users, setUsers] = useState([])
 
   const deleteUser = (id) => {
-     setUsers(users.filter(user => user.id !== id) )
-   
+    setUsers(users.filter(user => user.id !== id))
+
   }
 
-useEffect(()=>{
+  useEffect(() => {
 
 
-async function gitubUsers (){
+    async function gitubUsers() {
 
-    const responce = await fetch("https://api.github.com/users")
+      const responce = await fetch("https://api.github.com/users")
 
-    const data =  await responce.json();
-    setUsers(data) 
+      const data = await responce.json();
+      setUsers(data)
 
-  } 
-  gitubUsers();
+    }
+    gitubUsers();
 
 
 
-},[])
-  
-  
+  }, [])
+
+
 
   return (
-    <> 
-    <h1>The git hub users</h1>  
+    <>
+      <h1>The git hub users</h1>
 
-    <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexWrap:"wrap", gap:10}}>
-      
+      <div style={{ display: "flex",  justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
 
-      {users.map(user => (<img key={user.id} src={user.avatar_url} style={{height:200 , width:200 }}></img>) )} 
+        <div style={{ display: "flex",  justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
+          {users.map(user => <div>
+            <img key={user.id} src={user.avatar_url} style={{ height: 200, width: 200, border: "2px solid red" }} ></img>
+            <button style={{ border: "2px solid black" }} onClick={() => deleteUser(user.id)}>delete{user.id}</button>
+          </div>)}
 
-      {users.map(user => <button onClick={()=> deleteUser(user.id)}>delete{user.id}</button> )}
-    </div>
-      
+        </div>
+
+        
+      </div>
+
     </>
   )
 }
