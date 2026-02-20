@@ -33,18 +33,35 @@ function App() {
     <>
       <h1>The git hub users</h1>
 
-      <div style={{ display: "flex",  justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
 
-        <div style={{ display: "flex",  justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
           {users.map(user => <div>
             <img key={user.id} src={user.avatar_url} style={{ height: 200, width: 200, border: "2px solid red" }} ></img>
             <button style={{ border: "2px solid black" }} onClick={() => deleteUser(user.id)}>delete{user.id}</button>
           </div>)}
 
         </div>
-
-        
       </div>
+
+
+
+
+
+
+      {/* <div className="card" >
+
+        <div className="card-body">
+
+          {users.map(user => <div className="d">
+            <img key={user.id} src={user.avatar_url} style={{ height: 200, width: 200, border: "2px solid red" }} ></img>
+            <button className="btn btn-primary" style={{ border: "2px solid black" }} onClick={() => deleteUser(user.id)}>delete{user.id}</button>
+          </div>)}
+
+        </div>
+      </div> */}
+
+
 
     </>
   )
