@@ -51,7 +51,9 @@ function App() {
               <button onClick={() => handelDelete(todo.id) } >Delete</button> 
               
             </li>
-          ))}
+          ))} 
+
+          
         </ul> 
         
       </div>

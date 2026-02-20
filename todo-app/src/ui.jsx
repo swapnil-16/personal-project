@@ -43,7 +43,7 @@ function UiChanges() {
     const deleteList = (nameToDelete) => {
         setTods(tods.filter(tod => tod.name !== nameToDelete))  
 
-        console.log(nameToDelete)
+        
 
        
         
