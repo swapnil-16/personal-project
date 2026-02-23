@@ -1,14 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+
 import App from './App.jsx' 
-import UiChanges from './ui.jsx'
+import UiChanges from './ui.jsx' 
+import 'bootstrap/dist/css/bootstrap.min.css' 
+import UserData from './UserData.jsx'
+
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <UiChanges></UiChanges>
-    <App />
+    {/* <UiChanges></UiChanges> */}
+    <App /> 
+   <UserData></UserData>
     
   </StrictMode>,
 )

@@ -24,13 +24,13 @@ function App() {
   // // Step 4: Update state
   // setUsers(updatedUsers) 
 
-   const userToPin = users.find(user => user.id === id) 
+   const userToPin = users.filter(user => user.id === id) 
    console.log(userToPin) 
 
    const remeaningUsers = users.filter(user => user.id !== id) 
    console.log(remeaningUsers) 
 
-   setUsers([userToPin , ...remeaningUsers])
+   setUsers([...userToPin , ...remeaningUsers])
 
   }
 
