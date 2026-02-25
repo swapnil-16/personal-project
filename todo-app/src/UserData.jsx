@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function UserData() {
     const [users, setUsers] = useState([
@@ -11,10 +11,11 @@ export default function UserData() {
     // const [totalAgeValue, setTotalAge] = useState(0);
 
     // ✅ Add edit state
-    const [editId, setEditId] = useState(null); 
+    const [editId, setEditId] = useState(null);
 
-    
-const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
+    const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
+    // setTotalAge(totalAgeValue);
+
     // ➜ ADD or UPDATE
     function addUser() {
         if (!name || !age) return alert("Enter all data");
@@ -32,18 +33,18 @@ const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
             setUsers(prev => [
                 ...prev,
                 { id: Date.now(), name, age: Number(age) }
-            ]); 
+            ]);
 
-            
-        // setTotalAge(totalAgeValue);
-        } 
+
+            // setTotalAge(totalAgeValue);
+        }
 
 
 
         // Clear form
         setName("");
         setAge("");
-    }
+    } 
 
     // ➜ EDIT - Populate form with user data
     function editUser(id) {
@@ -73,7 +74,7 @@ const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
 
     // ➜ REDUCE total age 
     // function handleTotalAge() {
-        // const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
+    // const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
     //     setTotalAge(totalAgeValue);
     // }
 
@@ -82,7 +83,30 @@ const totalAgeValue = users.reduce((sum, u) => sum + Number(u.age), 0);
         setUsers([]);
         setTotalAge(0);
         cancelEdit();
-    }
+    } 
+
+    // useEffect(() => {
+    //     console.log("run once")
+    // },[])  
+
+
+    useEffect(() => {
+    console.log("change in name is happening", name)
+  }, [name]) 
+
+  useEffect(()=> {
+    console.log("user length  has updated" , users)
+  },[users.length])
+ 
+  useEffect(()=> { 
+    if(users.length === 0){
+        console.log("No User left" , users) 
+        alert("No User left ")
+    }else
+    console.log("user length  has updated" , users)
+  },[users.length])
+
+ 
 
     return (
         <div className="container mx-auto px-4 mt-5">
