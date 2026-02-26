@@ -11,8 +11,8 @@ import UserData from './UserData.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <UiChanges></UiChanges> */}
-    <App /> 
-   <UserData></UserData>
+    <App  /> 
+   <UserData xyz = "Crud Operations"></UserData>
     
   </StrictMode>,
 )

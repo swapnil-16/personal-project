@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function UserData() {
+export default function UserData( {xyz}) {
     const [users, setUsers] = useState([
         { id: 1, name: "Ram", age: 20 },
         { id: 2, name: "Ajit", age: 25 }
@@ -54,7 +54,15 @@ export default function UserData() {
             setAge(userToEdit.age);
             setEditId(id);
         }
-    }
+    } 
+
+    // function  editUser (id) {
+    //     const userToEdit = users.find( u => u.id === id);
+    //     if(userToEdit){
+    //         setName(userToEdit.name)
+    //         setAge(userToEdit.age)
+    //     }
+    // }
 
     // ➜ CANCEL EDIT
     function cancelEdit() {
@@ -104,15 +112,17 @@ export default function UserData() {
         alert("No User left ")
     }else
     console.log("user length  has updated" , users)
-  },[users.length])
+  },[users.length]) 
 
+  
  
 
     return (
         <div className="container mx-auto px-4 mt-5">
             <div className="card">
                 <div className="card-body">
-                    <div className="container p-4">
+                    <div className="container p-4"> 
+                        <h1>{xyz}</h1>
                         <h2 className="mb-4 text-primary border-bottom pb-2">Users</h2>
 
                         {/* Show edit mode indicator */}

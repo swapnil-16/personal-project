@@ -12,6 +12,8 @@ function App() {
   ]);
 
 
+
+
   // const [todos, setTodos] = useState(() => {
   //   const saved = localStorage.getItem('my-todos'); // same key name!
   //   if (saved) {
@@ -28,11 +30,13 @@ function App() {
 
   const [text, setText] = useState("");
 
+  const [editId, setEditId] = useState(null);
+
   const handleClicked = () => {
     if (text.trim() === "") return;
     setTodos([...todos, { id: Date.now(), text: text.trim() }]);
-    setText(""); 
-    
+    setText("");
+
     console.log(Date.now())
 
   };
@@ -41,6 +45,34 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
 
   };
+
+  const handelEdit = (id) => {
+    const userToedit = todos.find(todo => todo.id === id)
+    if (userToedit) {
+      setText(userToedit.text)
+      setEditId(userToedit.id)
+
+    }
+
+  }
+
+  const saveEditedTodo = () => { 
+if (text.trim() === "") return;
+
+setTodos( todos.map(todo => todo.id === editId ? {...todo , text : text }: todo)) 
+setText("")
+setEditId(null) 
+
+  } 
+
+ const handelPin = (id) => {
+const userToPin = todos.find(todo => todo.id === id) 
+ const remeaningTodos = todos.filter(todo => todo.id !== id)
+
+setTodos([userToPin , ...remeaningTodos])
+
+
+ }
 
   //   useEffect(()=> {
   //  localStorage.setItem("my-todos" , JSON.stringify(todos))
@@ -59,7 +91,7 @@ function App() {
   return (
     <>
       <div className="container mt-4">
-        <h1 className="text-center mb-4">Todo App</h1>
+        <h1 className="text-center mb-4">Crud Operations</h1>
 
         <div className="row">
           {/* Input section */}
@@ -75,9 +107,17 @@ function App() {
 
               <button
                 className="btn btn-danger"
-                onClick={handleClicked}
+                onClick={handleClicked}  
+                disabled={editId !== null}
               >
                 Add
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={saveEditedTodo} 
+                
+              >
+                save
               </button>
             </div>
           </div>
@@ -97,6 +137,19 @@ function App() {
                     onClick={() => handelDelete(todo.id)}
                   >
                     Delete
+                  </button>
+
+                  <button
+                    className="btn btn-primary "
+                    onClick={() => handelEdit(todo.id, todo.text)}
+                  >
+                    Edit
+                  </button> 
+                  <button
+                    className="btn btn-warning "
+                    onClick={() => handelPin(todo.id)}
+                  >
+                    Pin
                   </button>
                 </li>
               ))}
