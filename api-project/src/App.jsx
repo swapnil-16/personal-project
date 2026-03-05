@@ -64,11 +64,38 @@ function App() {
     setUsers([])
   }
 
+
+  const [hexcode , setHexcode] = useState("")
+
+  const changeBackgroundColor = () => {
+
+
+    function generateCode() {
+      return Math.floor(100000 + Math.random() * 900000);
+    }
+
+    const code = generateCode();
+    console.log(code);
+
+    const hexCode = "#" + code 
+    setHexcode(hexCode)
+    console.log(hexCode)
+  } 
+
+  useEffect(() => {
+    document.body.style.backgroundColor = hexcode
+  }, [hexcode]);
+
   return (
     <>
+      <button onClick={changeBackgroundColor}>backgroung color</button>
       <h1>The git hub users</h1>
-      <p className="m-4">Enter number of users to be rendered</p>
-      <input className="m-4" type="number " value={num} onChange={(e) => SetNum(e.target.value)}></input>
+      <div className="d-flex">
+        <p className="m-4 fw-bold fs-3">Enter number of users to be rendered</p>
+        <input className="m-4" type="number " value={num} onChange={(e) => SetNum(e.target.value)}></input>
+
+      </div>
+
 
       <div>
         <button className="btn btn-warning m-2" onClick={clearAll}>clear all</button>
@@ -79,7 +106,7 @@ function App() {
           {users.map(user => <div className="card">
             <img key={user.id} src={user.avatar_url} style={{ height: 150, width: 150, }} ></img>
             <div className="#">
-              <p className="text-center fw-semibold mb-0">{user.login}</p>
+              <p className="text-center fw-semibold mb-0">{user.login} {user.id}</p>
               <button className="btn btn-outline-danger m-2" onClick={() => deleteUser(user.id)}>Delete</button>
               <button className="btn btn-outline-info" onClick={() => pinUser(user.id)}>Pin</button>
             </div>
