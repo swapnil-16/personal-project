@@ -87,19 +87,19 @@ function App() {
   }, [hexcode]);
 
 
-  const contacts = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"];
-  const associates = ["A1", "A2", "A3"];
+  // const contacts = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"];
+  // const associates = ["A1", "A2", "A3"];
 
-  const distribution = {};
+  // const distribution = {};
 
-  associates.forEach(a => distribution[a] = []);
+  // associates.forEach(a => distribution[a] = []);
 
-  contacts.forEach((contact, index) => {
-    const associate = associates[index % associates.length];
-    distribution[associate].push(contact);
-  });
+  // contacts.forEach((contact, index) => {
+  //   const associate = associates[index % associates.length];
+  //   distribution[associate].push(contact);
+  // });
 
-  console.log(distribution);
+  // console.log(distribution);
 
   return (
     <>
