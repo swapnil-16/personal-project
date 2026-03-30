@@ -1,18 +1,24 @@
 import React from 'react'
+import { useState } from 'react'
 
-const Login = () => {
+const Login = () => {  
+
+  const [email, setEmail] = useState("")
+
+const [password, setPassword] = useState("")
+
+  const handelSubmit = (e) => {
+    e.preventDefault()
+    console.log(email)
+    console.log(password) 
+    setEmail("");
+    setPassword("");
+    
+  }
   return (
-    // <div className=' flex items-center justify-center h-screen w-screen '>
-    //   <div className='border-2 border-red-400'>
-    //     <form className='flex flex-col items-center justify-center '>
-    //       <input type='email'></input>
-    //       <input type='password'></input>
-    //       <button className='mt-5'>submit</button>
-    //     </form>
-    //   </div>
-    // </div> 
+    
 
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+<div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
   <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
     
     {/* Heading */}
@@ -21,14 +27,19 @@ const Login = () => {
     </h2>
 
     {/* Form */}
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit = {handelSubmit}>
       
       {/* Email */}
       <div>
         <label className="block text-sm text-gray-600 mb-1">
           Email
         </label>
-        <input
+        <input 
+         value={email}
+         onChange={(e)=> {
+          setEmail(e.target.value)
+         }}
+         required 
           type="email"
           placeholder="Enter your email"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
@@ -41,6 +52,11 @@ const Login = () => {
           Password
         </label>
         <input
+        value={password}
+         onChange={(e)=> {
+          setPassword(e.target.value)
+         }} 
+         
           type="password"
           placeholder="Enter your password"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
@@ -52,7 +68,7 @@ const Login = () => {
         type="submit"
         className="mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200 font-medium"
       >
-        Sign In
+       submit
       </button>
 
       {/* Extra */}
