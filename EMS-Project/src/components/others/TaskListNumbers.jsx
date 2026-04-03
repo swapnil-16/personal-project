@@ -20,7 +20,8 @@ const TaskListNumbers = () => {
   //   { title: 'Completed', count: 3, bgColor: 'bg-green-500' },
   //   { title: 'Accepted', count: 0, bgColor: 'bg-yellow-500' },
   //   { title: 'Failed', count: 1, bgColor: 'bg-red-500' }
-  // ]
+  // ] 
+  
 
   return (
     // <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6">
